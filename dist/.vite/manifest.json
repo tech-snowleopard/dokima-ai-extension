@@ -1,0 +1,87 @@
+{
+  "../../../../../../@crx/manifest": {
+    "file": "assets/crx-manifest.js-BalifoGd.js",
+    "name": "crx-manifest.js",
+    "src": "../../../../../../@crx/manifest",
+    "isEntry": true
+  },
+  "_cache-service-CzSbCUsz.js": {
+    "file": "assets/cache-service-CzSbCUsz.js",
+    "name": "cache-service"
+  },
+  "_constants-BFj5qgTA.js": {
+    "file": "assets/constants-BFj5qgTA.js",
+    "name": "constants"
+  },
+  "_platform-scraper.ts-loader-C4oGE65i.js": {
+    "file": "assets/platform-scraper.ts-loader-C4oGE65i.js",
+    "src": "_platform-scraper.ts-loader-C4oGE65i.js"
+  },
+  "_supabase-D8DPKpAZ.js": {
+    "file": "assets/supabase-D8DPKpAZ.js",
+    "name": "supabase",
+    "imports": [
+      "_constants-BFj5qgTA.js"
+    ]
+  },
+  "_ui-manager.ts-loader-8ZVCnXLJ.js": {
+    "file": "assets/ui-manager.ts-loader-8ZVCnXLJ.js",
+    "src": "_ui-manager.ts-loader-8ZVCnXLJ.js"
+  },
+  "background/service-worker.ts": {
+    "file": "assets/service-worker.ts-Crr_xsOP.js",
+    "name": "service-worker.ts",
+    "src": "background/service-worker.ts",
+    "isEntry": true,
+    "imports": [
+      "_constants-BFj5qgTA.js",
+      "_cache-service-CzSbCUsz.js",
+      "_supabase-D8DPKpAZ.js"
+    ]
+  },
+  "content-scripts/modjo-network-interceptor-v2.ts": {
+    "file": "assets/modjo-network-interceptor-v2.ts-BCq0Agp5.js",
+    "name": "modjo-network-interceptor-v2.ts",
+    "src": "content-scripts/modjo-network-interceptor-v2.ts",
+    "isEntry": true
+  },
+  "content-scripts/modjo-ui-automation.ts": {
+    "file": "assets/modjo-ui-automation.ts-CI6QS0Vw.js",
+    "name": "modjo-ui-automation.ts",
+    "src": "content-scripts/modjo-ui-automation.ts",
+    "isEntry": true
+  },
+  "content-scripts/platform-scraper.ts": {
+    "file": "assets/platform-scraper.ts-BLdOwZys.js",
+    "name": "platform-scraper.ts",
+    "src": "content-scripts/platform-scraper.ts",
+    "isEntry": true,
+    "imports": [
+      "_cache-service-CzSbCUsz.js"
+    ]
+  },
+  "content-scripts/ui-manager.ts": {
+    "file": "assets/ui-manager.ts-Tb0yB0r5.js",
+    "name": "ui-manager.ts",
+    "src": "content-scripts/ui-manager.ts",
+    "isEntry": true,
+    "imports": [
+      "_constants-BFj5qgTA.js",
+      "content-scripts/platform-scraper.ts",
+      "_cache-service-CzSbCUsz.js"
+    ]
+  },
+  "sidepanel/index.html": {
+    "file": "assets/index.html-C7t6QZgT.js",
+    "name": "index.html",
+    "src": "sidepanel/index.html",
+    "isEntry": true,
+    "imports": [
+      "_constants-BFj5qgTA.js",
+      "_supabase-D8DPKpAZ.js"
+    ],
+    "css": [
+      "assets/index-BxUErlow.css"
+    ]
+  }
+}
