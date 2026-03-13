@@ -50,7 +50,7 @@ DOKIMA AI analyses your sales calls in real-time and provides instant, structure
 
 ## Version
 
-Current version: **0.3.31**
+Current version: **0.3.32**
 
 ---
 

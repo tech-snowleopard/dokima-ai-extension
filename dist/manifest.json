@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Dokima AI",
-  "version": "0.3.31",
+  "version": "0.3.32",
   "description": "AI-powered, pre-built scoring to drive consistent sales playbook execution",
   "permissions": [
     "activeTab",
@@ -69,7 +69,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "SalesAgents AI"
+    "default_title": "Dokima AI"
   },
   "icons": {
     "16": "icons/icon16.png",
