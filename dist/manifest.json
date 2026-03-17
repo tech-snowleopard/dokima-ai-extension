@@ -1,21 +1,23 @@
 {
   "manifest_version": 3,
   "name": "Dokima AI",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "description": "AI-powered, pre-built scoring to drive consistent sales playbook execution",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "identity"
   ],
   "host_permissions": [
     "*://app.fireflies.ai/*",
     "*://app.modjo.ai/*",
     "*://app.clari.com/*",
+    "*://*.app.gong.io/*",
     "*://app.gong.io/*",
     "*://dashboard.aircall.io/*",
     "http://localhost:3000/*",
-    "https://tech-snowleopard-callscore-extensio.vercel.app/*",
-    "https://callscore-extension-production.up.railway.app/*"
+    "https://app.dokima.ai/*",
+    "https://api.dokima.ai/*"
   ],
   "background": {
     "service_worker": "service-worker-loader.js",
@@ -24,7 +26,7 @@
   "content_scripts": [
     {
       "js": [
-        "assets/modjo-network-interceptor-v2.ts-BCq0Agp5.js"
+        "assets/modjo-network-interceptor-v2.ts-DtiEQFRF.js"
       ],
       "matches": [
         "*://app.modjo.ai/*"
@@ -46,13 +48,14 @@
     },
     {
       "js": [
-        "assets/ui-manager.ts-loader-8ZVCnXLJ.js",
-        "assets/platform-scraper.ts-loader-C4oGE65i.js"
+        "assets/ui-manager.ts-loader-DJRV-wHX.js",
+        "assets/platform-scraper.ts-loader-C0tpbSqy.js"
       ],
       "matches": [
         "*://app.fireflies.ai/*",
         "*://app.modjo.ai/*",
         "*://app.clari.com/*",
+        "*://*.app.gong.io/*",
         "*://app.gong.io/*",
         "*://dashboard.aircall.io/*"
       ],
@@ -87,7 +90,8 @@
       ],
       "resources": [
         "sidepanel/*",
-        "assets/*"
+        "assets/*",
+        "onboarding/onboarding.html"
       ],
       "use_dynamic_url": false
     },
@@ -96,7 +100,7 @@
         "*://app.modjo.ai/*"
       ],
       "resources": [
-        "assets/modjo-network-interceptor-v2.ts-BCq0Agp5.js"
+        "assets/modjo-network-interceptor-v2.ts-DtiEQFRF.js"
       ],
       "use_dynamic_url": false
     },
@@ -113,6 +117,7 @@
     },
     {
       "matches": [
+        "*://*.app.gong.io/*",
         "*://app.clari.com/*",
         "*://app.fireflies.ai/*",
         "*://app.gong.io/*",
@@ -120,10 +125,11 @@
         "*://dashboard.aircall.io/*"
       ],
       "resources": [
-        "assets/constants-BFj5qgTA.js",
-        "assets/platform-scraper.ts-BLdOwZys.js",
+        "assets/constants-BZlHI6XL.js",
+        "assets/platform-scraper-Dj2gyeFJ.js",
         "assets/cache-service-CzSbCUsz.js",
-        "assets/ui-manager.ts-Tb0yB0r5.js"
+        "assets/platform-scraper.ts-CZhMVc6d.js",
+        "assets/ui-manager.ts-giAQviBO.js"
       ],
       "use_dynamic_url": false
     }

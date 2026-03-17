@@ -1,1 +1,0 @@
-const s={STATE:"salesagents_state",AUTH:"salesagents_auth",AUTH_SESSION:"sb-tqznppthbznbvypskzwc-auth-token",SETTINGS:"salesagents_settings"},t="https://tech-snowleopard-callscore-extensio.vercel.app",a="http://localhost:3000";export{s as S,a as W,t as a};

@@ -2,19 +2,29 @@
 
 **AI-powered scoring for B2B sales calls.**
 
-DOKIMA AI analyses your sales calls in real-time and provides instant, structured feedback based on a proprietary qualification framework.
+DOKIMA AI analyses your sales calls and provides instant, structured feedback based on a proprietary qualification framework.
+
+> **Note:** Dokima AI is currently in private development. The beta program has not started yet. To register your interest, contact us at beta@dokima.ai.
 
 ---
 
 ## Supported Platforms
 
-| Platform | Status |
-|----------|--------|
-| Modjo | Supported |
-| Fireflies | Supported |
-| Gong | Coming soon |
-| Clari | Coming soon |
-| Aircall | Coming soon |
+| Platform | Status | Connection Mode |
+|----------|--------|----------------|
+| Aircall | Coming soon | OAuth / API Key |
+| Fireflies | Supported | OAuth / API Key |
+| Gong | Supported | OAuth / API Key |
+| Modjo | Supported |  API Key |
+
+
+---
+
+## Prerequisites
+
+- Google Chrome (version 114+)
+- A **Dokima AI account** (not yet available — beta program coming soon)
+- An active account on a supported call recording platform (Fireflies, Gong, or Modjo)
 
 ---
 
@@ -26,12 +36,13 @@ DOKIMA AI analyses your sales calls in real-time and provides instant, structure
 4. Click **Load unpacked**
 5. Select the `dist/` folder from this repository
 6. The DOKIMA AI icon appears in your Chrome toolbar
+7. Sign in with your Dokima AI account
 
 ---
 
 ## How It Works
 
-1. Open a call recording on a supported platform (Modjo, Fireflies, etc.)
+1. Open a call recording on a supported platform
 2. Click the DOKIMA AI icon to open the side panel
 3. Click **Analyze** to score the call
 4. Review your results across three dimensions:
@@ -41,17 +52,10 @@ DOKIMA AI analyses your sales calls in real-time and provides instant, structure
 
 ---
 
-## Requirements
-
-- Google Chrome (version 114+)
-- An active account on a supported call recording platform
-
----
-
 ## Version
 
-Current version: **0.3.32**
+Current version: **0.3.33**
 
 ---
 
-*DOKIMA AI by SalesAgents*
+*DOKIMA AI - https://dokima.ai*

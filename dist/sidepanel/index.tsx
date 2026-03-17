@@ -60,7 +60,9 @@ const MEETING_TYPE_LABELS: Record<string, string> = {
   outbound_prospection: 'Outbound Prospection',
   inbound_qualification: 'Inbound Qualification',
   sales_discovery: 'Sales Discovery',
-  demo_meeting: 'Demo Meeting'
+  demo_meeting: 'Demo Meeting',
+  deal_progress: 'Deal Progress',
+  other: 'Other',
 }
 
 // Transform API AnalysisResult to DashboardData for the new UI
@@ -98,16 +100,19 @@ function transformAnalysisToDashboardData(
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
       duration: `${totalMinutes} min`,
       participants: transcript.metadata?.participants?.length || 2,
-      meetingType: MEETING_TYPE_LABELS[analysis.meeting_type] || analysis.meeting_type
+      meetingType: MEETING_TYPE_LABELS[analysis.meeting_type] || analysis.meeting_type,
+      meetingTypeRaw: analysis.meeting_type,
     },
     scores: {
-      playbook: analysis.score_global,
-      // score_qualification is 0-3 scale, convert to 0-100 for display
-      dealQualification: Math.round((analysis.score_qualification / 3) * 100)
+      playbook: analysis.score_playbook,
+      dealQualification: analysis.score_qualification != null
+        ? Math.round((analysis.score_qualification / 3) * 100)
+        : null,
     },
     activities,
-    redFlagsCount: analysis.red_flags.length,
-    totalDuration: `${totalMinutes} min`
+    redFlagsCount: analysis.level2?.red_flags?.length ?? analysis.red_flags_count ?? 0,
+    totalDuration: `${totalMinutes} min`,
+    analysisStatus: analysis.analysis_status,
   }
 }
 
