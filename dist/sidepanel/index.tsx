@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import type { ExtensionState, TranscriptData } from '@/shared/types'
-import { STORAGE_KEYS } from '@/shared/constants'
+import { STORAGE_KEYS, API_BASE_URL } from '@/shared/constants'
 import { analyzeUnifiedTranscript, type AnalysisResult } from '@/shared/lib/analysis'
 import { getSettings, setDemoMode, setDevMode, type Settings } from '@/shared/lib/settings'
-import { supabase, getSession, signInWithPassword, signInWithMagicLink, signOut, openDashboardWithAuth } from '@/shared/lib/supabase'
+import { supabase, getSession, signInWithPassword, signInWithMagicLink, signOut, openDashboardWithAuth, type Session } from '@/shared/lib/supabase'
 import { DashboardView, DEMO_DASHBOARD_DATA, type DashboardData } from './components/dashboard'
 import { AnalysisLaunchScreen } from './components/AnalysisLaunchScreen'
 
@@ -34,6 +34,7 @@ const ExternalLinkIcon = () => (
 
 type AuthState = 'loading' | 'unauthenticated' | 'magic_link_sent' | 'authenticated'
 type AuthMode = 'password' | 'magic_link'
+type OnboardingStatus = 'loading' | 'complete' | 'incomplete'
 
 // Activity name mapping: backend enum -> display label
 const ACTIVITY_LABELS: Record<string, string> = {
@@ -126,6 +127,10 @@ const Sidepanel: React.FC = () => {
   const [authError, setAuthError] = useState<string | null>(null)
   const [authLoading, setAuthLoading] = useState(false)
 
+  // Onboarding gate state
+  const [onboardingStatus, setOnboardingStatus] = useState<OnboardingStatus>('loading')
+  const [onboardingCurrentStep, setOnboardingCurrentStep] = useState<number>(1)
+
   // App state
   const [state, setState] = useState<ExtensionState>({ status: 'idle' })
   const [loading, setLoading] = useState(true)
@@ -183,33 +188,38 @@ const Sidepanel: React.FC = () => {
         if (session?.user) {
           setUser(session.user)
           setAuthState('authenticated')
+          await checkOnboarding(session)
         } else {
           setAuthState('unauthenticated')
+          setOnboardingStatus('loading')
         }
       } catch (err) {
         console.error('[Sidepanel] Auth check failed:', err)
         setAuthState('unauthenticated')
+        setOnboardingStatus('loading')
       }
     }
 
     checkAuth()
 
     // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('[Sidepanel] Auth state changed:', event)
       if (session?.user) {
         setUser(session.user)
         setAuthState('authenticated')
+        await checkOnboarding(session)
       } else if (event === 'SIGNED_OUT') {
         setUser(null)
         setAuthState('unauthenticated')
+        setOnboardingStatus('loading')
       }
     })
 
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   // Load settings and app state
   useEffect(() => {
@@ -303,6 +313,34 @@ const Sidepanel: React.FC = () => {
       window.removeEventListener('message', handleWindowMessage)
     }
   }, [])
+
+  const checkOnboarding = async (session: Session) => {
+    const orgId = (session.user.user_metadata as Record<string, unknown> | undefined)?.organization_id as string | undefined
+    if (!orgId) {
+      console.log('[Sidepanel] No organization_id in session, skipping onboarding gate')
+      setOnboardingStatus('complete')
+      return
+    }
+    try {
+      console.log('[Sidepanel] Checking onboarding progress for org:', orgId)
+      const response = await fetch(
+        `${API_BASE_URL}/api/v1/onboarding/organizations/${orgId}/progress`,
+        { headers: { 'Authorization': `Bearer ${session.access_token}` } }
+      )
+      if (!response.ok) {
+        console.log('[Sidepanel] Onboarding endpoint unavailable (status:', response.status, '), not blocking')
+        setOnboardingStatus('complete')
+        return
+      }
+      const progress = await response.json() as { current_step?: number; completed?: boolean }
+      setOnboardingCurrentStep(progress.current_step ?? 1)
+      setOnboardingStatus(progress.completed ? 'complete' : 'incomplete')
+      console.log('[Sidepanel] Onboarding status:', progress.completed ? 'complete' : 'incomplete', '— step:', progress.current_step ?? 1)
+    } catch (err) {
+      console.error('[Sidepanel] Onboarding check failed, not blocking:', err)
+      setOnboardingStatus('complete')
+    }
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -550,7 +588,19 @@ const Sidepanel: React.FC = () => {
 
       {/* Scrollable Content */}
       <main className="panel-scrollable-content">
-        {showDashboard ? (
+        {onboardingStatus === 'loading' ? (
+          <div className="loading">Loading...</div>
+        ) : onboardingStatus === 'incomplete' ? (
+          <div className="onboarding-gate">
+            <p>Complete your onboarding to start scoring calls.</p>
+            <button
+              className="primary-btn"
+              onClick={() => chrome.tabs.create({ url: `https://app.dokima.ai/onboarding/${onboardingCurrentStep}` })}
+            >
+              Complete setup ↗
+            </button>
+          </div>
+        ) : showDashboard ? (
           <DashboardView data={dashboardData} />
         ) : isInIframe || transcript ? (
           <AnalysisLaunchScreen
@@ -566,8 +616,8 @@ const Sidepanel: React.FC = () => {
         )}
       </main>
 
-      {/* Fixed "Go to full scoring" button - only when dashboard is shown */}
-      {showDashboard && (
+      {/* Fixed "Go to full scoring" button - only when dashboard is shown and onboarding complete */}
+      {showDashboard && onboardingStatus === 'complete' && (
         <div className="full-scoring-bar">
           <button className="btn-full-width" onClick={handleFullScoringClick}>
             <ExternalLinkIcon />
@@ -596,7 +646,7 @@ const Sidepanel: React.FC = () => {
             <span>Dev</span>
           </label>
         </div>
-        {!showDashboard && (
+        {!showDashboard && onboardingStatus === 'complete' && (
           <button
             className="analyze-btn-footer"
             onClick={handleAnalyze}

@@ -12,7 +12,7 @@ DOKIMA AI analyses your sales calls and provides instant, structured feedback ba
 
 | Platform | Status | Connection Mode |
 |----------|--------|----------------|
-| Aircall | Coming soon | OAuth / API Key |
+| Aircall | Supported | OAuth / API Key |
 | Fireflies | Supported | OAuth / API Key |
 | Gong | Supported | OAuth / API Key |
 | Modjo | Supported |  API Key |
@@ -54,7 +54,7 @@ DOKIMA AI analyses your sales calls and provides instant, structured feedback ba
 
 ## Version
 
-Current version: **0.3.33**
+Current version: **0.3.41**
 
 ---
 

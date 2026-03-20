@@ -734,3 +734,19 @@ body {
   color: #6b7280;
   margin-top: 0.5rem;
 }
+
+/* Onboarding gate */
+.onboarding-gate {
+  text-align: center;
+  padding: 2.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.onboarding-gate p {
+  color: #64748b;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

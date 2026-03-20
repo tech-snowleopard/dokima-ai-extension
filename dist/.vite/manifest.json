@@ -1,6 +1,6 @@
 {
   "../../../../../../@crx/manifest": {
-    "file": "assets/crx-manifest.js-pJoPSke5.js",
+    "file": "assets/crx-manifest.js-3xmi18u1.js",
     "name": "crx-manifest.js",
     "src": "../../../../../../@crx/manifest",
     "isEntry": true
@@ -9,42 +9,46 @@
     "file": "assets/cache-service-CzSbCUsz.js",
     "name": "cache-service"
   },
-  "_constants-BZlHI6XL.js": {
-    "file": "assets/constants-BZlHI6XL.js",
+  "_client-CgdMI5WD.js": {
+    "file": "assets/client-CgdMI5WD.js",
+    "name": "client"
+  },
+  "_constants-BV2Td-kM.js": {
+    "file": "assets/constants-BV2Td-kM.js",
     "name": "constants"
   },
-  "_platform-scraper-Dj2gyeFJ.js": {
-    "file": "assets/platform-scraper-Dj2gyeFJ.js",
+  "_platform-scraper-CbW9UmaY.js": {
+    "file": "assets/platform-scraper-CbW9UmaY.js",
     "name": "platform-scraper",
     "imports": [
       "_cache-service-CzSbCUsz.js",
-      "_constants-BZlHI6XL.js"
+      "_constants-BV2Td-kM.js"
     ]
   },
-  "_platform-scraper.ts-loader-C0tpbSqy.js": {
-    "file": "assets/platform-scraper.ts-loader-C0tpbSqy.js",
-    "src": "_platform-scraper.ts-loader-C0tpbSqy.js"
+  "_platform-scraper.ts-loader-Ch572vU7.js": {
+    "file": "assets/platform-scraper.ts-loader-Ch572vU7.js",
+    "src": "_platform-scraper.ts-loader-Ch572vU7.js"
   },
-  "_supabase-BqiRL7gF.js": {
-    "file": "assets/supabase-BqiRL7gF.js",
+  "_supabase-B8yZzMK0.js": {
+    "file": "assets/supabase-B8yZzMK0.js",
     "name": "supabase",
     "imports": [
-      "_constants-BZlHI6XL.js"
+      "_constants-BV2Td-kM.js"
     ]
   },
-  "_ui-manager.ts-loader-DJRV-wHX.js": {
-    "file": "assets/ui-manager.ts-loader-DJRV-wHX.js",
-    "src": "_ui-manager.ts-loader-DJRV-wHX.js"
+  "_ui-manager.ts-loader-BEKEI-up.js": {
+    "file": "assets/ui-manager.ts-loader-BEKEI-up.js",
+    "src": "_ui-manager.ts-loader-BEKEI-up.js"
   },
   "background/service-worker.ts": {
-    "file": "assets/service-worker.ts-MosIZXDG.js",
+    "file": "assets/service-worker.ts-BiGjScOp.js",
     "name": "service-worker.ts",
     "src": "background/service-worker.ts",
     "isEntry": true,
     "imports": [
-      "_constants-BZlHI6XL.js",
+      "_constants-BV2Td-kM.js",
       "_cache-service-CzSbCUsz.js",
-      "_supabase-BqiRL7gF.js"
+      "_supabase-B8yZzMK0.js"
     ]
   },
   "content-scripts/modjo-network-interceptor-v2.ts": {
@@ -60,38 +64,64 @@
     "isEntry": true
   },
   "content-scripts/platform-scraper.ts": {
-    "file": "assets/platform-scraper.ts-CZhMVc6d.js",
+    "file": "assets/platform-scraper.ts-BCBSZ9JM.js",
     "name": "platform-scraper.ts",
     "src": "content-scripts/platform-scraper.ts",
     "isEntry": true,
     "imports": [
-      "_platform-scraper-Dj2gyeFJ.js",
+      "_platform-scraper-CbW9UmaY.js",
       "_cache-service-CzSbCUsz.js",
-      "_constants-BZlHI6XL.js"
+      "_constants-BV2Td-kM.js"
     ]
   },
   "content-scripts/ui-manager.ts": {
-    "file": "assets/ui-manager.ts-giAQviBO.js",
+    "file": "assets/ui-manager.ts-BK3pvR89.js",
     "name": "ui-manager.ts",
     "src": "content-scripts/ui-manager.ts",
     "isEntry": true,
     "imports": [
-      "_constants-BZlHI6XL.js",
-      "_platform-scraper-Dj2gyeFJ.js",
+      "_constants-BV2Td-kM.js",
+      "_platform-scraper-CbW9UmaY.js",
       "_cache-service-CzSbCUsz.js"
     ]
   },
+  "onboarding/fireflies-light.svg": {
+    "file": "assets/fireflies-light-BCMQdM0v.svg",
+    "src": "onboarding/fireflies-light.svg"
+  },
+  "onboarding/modjo-light.png": {
+    "file": "assets/modjo-light-CKC_ETlR.png",
+    "src": "onboarding/modjo-light.png"
+  },
+  "onboarding/onboarding.html": {
+    "file": "assets/onboarding.html-Bbcmc1q7.js",
+    "name": "onboarding.html",
+    "src": "onboarding/onboarding.html",
+    "isEntry": true,
+    "imports": [
+      "_client-CgdMI5WD.js",
+      "_constants-BV2Td-kM.js"
+    ],
+    "css": [
+      "assets/onboarding-D2tDDhyE.css"
+    ],
+    "assets": [
+      "assets/fireflies-light-BCMQdM0v.svg",
+      "assets/modjo-light-CKC_ETlR.png"
+    ]
+  },
   "sidepanel/index.html": {
-    "file": "assets/index.html-Bnqk6CNN.js",
+    "file": "assets/index.html-CEe2QZN5.js",
     "name": "index.html",
     "src": "sidepanel/index.html",
     "isEntry": true,
     "imports": [
-      "_constants-BZlHI6XL.js",
-      "_supabase-BqiRL7gF.js"
+      "_client-CgdMI5WD.js",
+      "_constants-BV2Td-kM.js",
+      "_supabase-B8yZzMK0.js"
     ],
     "css": [
-      "assets/index-BxUErlow.css"
+      "assets/index-DNz-LLOE.css"
     ]
   }
 }

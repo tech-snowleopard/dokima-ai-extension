@@ -1,1 +1,0 @@
-const s={STATE:"salesagents_state",AUTH:"salesagents_auth",AUTH_SESSION:"sb-tqznppthbznbvypskzwc-auth-token",SETTINGS:"salesagents_settings"},t="https://app.dokima.ai",a="http://localhost:3000",_="https://api.dokima.ai";export{_ as A,s as S,a as W,t as a};

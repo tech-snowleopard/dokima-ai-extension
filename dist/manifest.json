@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Dokima AI",
-  "version": "0.3.33",
+  "version": "0.3.41",
   "description": "AI-powered, pre-built scoring to drive consistent sales playbook execution",
   "permissions": [
     "activeTab",
@@ -48,8 +48,8 @@
     },
     {
       "js": [
-        "assets/ui-manager.ts-loader-DJRV-wHX.js",
-        "assets/platform-scraper.ts-loader-C0tpbSqy.js"
+        "assets/ui-manager.ts-loader-BEKEI-up.js",
+        "assets/platform-scraper.ts-loader-Ch572vU7.js"
       ],
       "matches": [
         "*://app.fireflies.ai/*",
@@ -72,7 +72,8 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "Dokima AI"
+    "default_title": "Dokima AI",
+    "default_popup": "onboarding/onboarding.html"
   },
   "icons": {
     "16": "icons/icon16.png",
@@ -125,11 +126,11 @@
         "*://dashboard.aircall.io/*"
       ],
       "resources": [
-        "assets/constants-BZlHI6XL.js",
-        "assets/platform-scraper-Dj2gyeFJ.js",
+        "assets/constants-BV2Td-kM.js",
+        "assets/platform-scraper-CbW9UmaY.js",
         "assets/cache-service-CzSbCUsz.js",
-        "assets/platform-scraper.ts-CZhMVc6d.js",
-        "assets/ui-manager.ts-giAQviBO.js"
+        "assets/platform-scraper.ts-BCBSZ9JM.js",
+        "assets/ui-manager.ts-BK3pvR89.js"
       ],
       "use_dynamic_url": false
     }
