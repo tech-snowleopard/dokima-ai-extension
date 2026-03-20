@@ -54,7 +54,7 @@ DOKIMA AI analyses your sales calls and provides instant, structured feedback ba
 
 ## Version
 
-Current version: **0.3.41**
+Current version: **0.3.43**
 
 ---
 
